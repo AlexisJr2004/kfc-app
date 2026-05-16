@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KFC - Finger Lickin' Good</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        kfc: {
+                            red: '#e4002b',
+                            'red-dark': '#b80022',
+                            gold: '#ffc72c',
+                            dark: '#0a0a0a',
+                        }
+                    },
+                    fontFamily: {
+                        display: ['"Playfair Display"', 'serif'],
+                        sans: ['Poppins', 'sans-serif'],
+                        bebas: ['"Bebas Neue"', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-up': 'fadeUp 1s ease-out',
+                        'fade-right': 'fadeRight 1.2s ease-out',
+                        'float': 'float 8s ease-in-out infinite',
+                        'pulse-glow': 'pulseGlow 4s ease-in-out infinite',
+                        'spin-slow': 'spin 20s linear infinite',
+                    },
+                    keyframes: {
+                        fadeUp: {
+                            '0%': { opacity: '0', transform: 'translateY(40px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        fadeRight: {
+                            '0%': { opacity: '0', transform: 'translateX(60px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translate(0,0) scale(1)' },
+                            '50%': { transform: 'translate(-30px,30px) scale(1.05)' },
+                        },
+                        pulseGlow: {
+                            '0%, 100%': { transform: 'scale(1)', opacity: '0.7' },
+                            '50%': { transform: 'scale(1.15)', opacity: '1' },
+                        },
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Poppins', sans-serif; }
+        .font-display { font-family: 'Playfair Display', serif; }
+        .font-bebas { font-family: 'Bebas Neue', sans-serif; }
+        html { scroll-behavior: smooth; }
+
+        /* Custom underline animation for nav links */
+        .nav-link { position: relative; }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: #e4002b;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateX(-50%);
+        }
+        .nav-link:hover::after { width: 100%; }
+
+        /* Product card gradient top bar */
+        .producto { position: relative; overflow: hidden; }
+        .producto::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #e4002b, #ffc72c);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s ease;
+        }
+        .producto:hover::before { transform: scaleX(1); }
+
+        /* Glass effect for header */
+        .glass-header {
+            background: rgba(10, 10, 10, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        /* Rotating decorative ring around hero image */
+        .ring-decor {
+            background: conic-gradient(from 0deg, transparent 0%, rgba(228, 0, 43, 0.6) 25%, transparent 50%, rgba(255, 199, 44, 0.6) 75%, transparent 100%);
+        }
+    </style>
+</head>
+<body class="bg-neutral-50 text-neutral-900 overflow-x-hidden">
+
+    <!-- HEADER -->
+    <header class="glass-header fixed top-0 left-0 w-full z-50 border-b border-white/5">
+        <div class="max-w-7xl mx-auto flex justify-between items-center px-6 lg:px-12 py-5">
+            <div class="font-bebas text-3xl text-white tracking-[4px] flex items-center">
+                K<span class="text-kfc-red drop-shadow-[0_0_20px_rgba(228,0,43,0.6)]">F</span>C
+            </div>
+            <nav>
+                <ul class="flex items-center gap-6 md:gap-10">
+                    <li><a href="#inicio" class="nav-link text-white font-medium text-sm hover:text-kfc-gold transition">Inicio</a></li>
+                    <li><a href="#menu" class="nav-link text-white font-medium text-sm hover:text-kfc-gold transition">Menú</a></li>
+                    <li><a href="#nosotros" class="nav-link text-white font-medium text-sm hover:text-kfc-gold transition">Nosotros</a></li>
+                    <li><a href="#contacto" class="nav-link text-white font-medium text-sm hover:text-kfc-gold transition hidden sm:inline">Contacto</a></li>
+                    <li><a href="#menu" class="bg-kfc-red hover:bg-kfc-red-dark text-white text-sm font-semibold px-5 py-2.5 rounded-full transition shadow-lg shadow-kfc-red/30">Ordenar</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- HERO -->
+        <section id="inicio" class="relative min-h-screen flex items-center pt-32 pb-20 px-6 lg:px-12 overflow-hidden bg-gradient-to-br from-kfc-dark via-neutral-900 to-black">
+            <!-- Decorative background blobs -->
+            <div class="absolute -top-1/3 -right-32 w-[900px] h-[900px] rounded-full bg-kfc-red/20 blur-3xl animate-float"></div>
+            <div class="absolute bottom-0 left-0 w-[600px] h-[600px] rounded-full bg-kfc-gold/10 blur-3xl"></div>
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_50%,rgba(228,0,43,0.15)_0%,transparent_50%)]"></div>
+
+            <div class="relative z-10 max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center w-full">
+                <!-- Text content -->
+                <div class="animate-fade-up text-white">
+                    <span class="inline-block px-5 py-2 bg-kfc-red/15 border border-kfc-red/40 text-kfc-gold rounded-full text-xs font-semibold tracking-[3px] uppercase mb-6">
+                        ★ Receta Original 1952
+                    </span>
+                    <h1 class="font-display font-black text-5xl md:text-6xl lg:text-7xl leading-[1.05] tracking-tight mb-6">
+                        Sabor que se <em class="italic text-kfc-red">siente</em>,<br>
+                        crujiente que <em class="italic text-kfc-red">enamora</em>.
+                    </h1>
+                    <p class="text-lg text-white/70 font-light mb-10 max-w-xl">
+                        Descubre la auténtica receta secreta del Coronel Sanders con 11 hierbas y especias que han conquistado al mundo entero.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#menu" class="inline-flex items-center gap-2 bg-kfc-red hover:bg-kfc-red-dark text-white font-semibold px-9 py-4 rounded-full shadow-[0_20px_60px_rgba(228,0,43,0.4)] hover:-translate-y-1 transition-all duration-300">
+                            Ordenar Ahora
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                        </a>
+                        <a href="#nosotros" class="inline-flex items-center gap-2 border-2 border-white/30 hover:border-white text-white font-semibold px-9 py-4 rounded-full hover:bg-white/10 hover:-translate-y-1 transition-all duration-300">
+                            Nuestra Historia
+                        </a>
+                    </div>
+
+                    <!-- Trust stats inline -->
+                    <div class="flex gap-10 mt-14 pt-10 border-t border-white/10">
+                        <div>
+                            <div class="font-bebas text-4xl text-kfc-gold tracking-wide">145+</div>
+                            <div class="text-xs text-white/50 uppercase tracking-widest mt-1">Países</div>
+                        </div>
+                        <div>
+                            <div class="font-bebas text-4xl text-kfc-gold tracking-wide">25K</div>
+                            <div class="text-xs text-white/50 uppercase tracking-widest mt-1">Restaurantes</div>
+                        </div>
+                        <div>
+                            <div class="font-bebas text-4xl text-kfc-gold tracking-wide">70+</div>
+                            <div class="text-xs text-white/50 uppercase tracking-widest mt-1">Años</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Image with decorative ring -->
+                <div class="relative animate-fade-right flex justify-center items-center">
+                    <!-- Glow behind image -->
+                    <div class="absolute inset-0 m-auto w-[85%] h-[85%] rounded-full bg-kfc-red/50 blur-[100px] animate-pulse-glow"></div>
+
+                    <!-- Rotating gradient ring -->
+                    <div class="absolute w-[110%] aspect-square rounded-full ring-decor animate-spin-slow opacity-50 blur-2xl"></div>
+
+                    <!-- Image container -->
+                    <div class="relative w-full max-w-2xl">
+                        <img
+                            src="https://tb-static.uber.com/prod/image-proc/processed_images/0fe79089ee49472046e04ff8b4f29ed3/5e48b5818af0117f322d7c4ae77977a8.jpeg"
+                            alt="Pollo crujiente KFC"
+                            class="w-full rounded-3xl shadow-[0_40px_120px_rgba(0,0,0,0.7)] ring-1 ring-white/10 hover:scale-105 hover:-rotate-2 transition-transform duration-500"
+                        >
+
+                        <!-- Floating badge: rating -->
+                        <div class="absolute -top-6 -left-6 bg-white rounded-2xl px-5 py-4 shadow-2xl flex items-center gap-3">
+                            <div class="text-3xl">⭐</div>
+                            <div>
+                                <div class="font-bebas text-2xl text-kfc-dark leading-none">4.9</div>
+                                <div class="text-[10px] text-neutral-500 uppercase tracking-wider">Calificación</div>
+                            </div>
+                        </div>
+
+                        <!-- Floating badge: delivery -->
+                        <div class="absolute -bottom-6 -right-6 bg-kfc-red text-white rounded-2xl px-5 py-4 shadow-[0_20px_50px_rgba(228,0,43,0.5)] flex items-center gap-3">
+                            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                            <div>
+                                <div class="font-bold text-sm leading-none">Entrega</div>
+                                <div class="text-xs opacity-80 mt-0.5">en 30 min</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scroll indicator -->
+            <div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/40 text-xs flex flex-col items-center gap-2 animate-bounce">
+                <span class="uppercase tracking-widest">Scroll</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg>
+            </div>
+        </section>
+
+        <!-- MENU -->
+        <section id="menu" class="py-28 px-6 lg:px-12 bg-neutral-50">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-16">
+                    <span class="block text-kfc-red text-sm font-semibold tracking-[4px] uppercase mb-4">— Nuestro Menú —</span>
+                    <h2 class="font-display font-black text-4xl md:text-5xl lg:text-6xl tracking-tight">
+                        Lo que <em class="italic text-kfc-red">amarás</em> probar
+                    </h2>
+                </div>
+
+                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-7">
+                    <!-- Producto 1 -->
+                    <article class="producto bg-white rounded-3xl p-6 shadow-sm hover:shadow-2xl border border-neutral-100 hover:-translate-y-3 transition-all duration-500">
+                        <div class="h-52 rounded-2xl overflow-hidden mb-5 shadow-md">
+                            <img src="https://tb-static.uber.com/prod/image-proc/processed_images/0fe79089ee49472046e04ff8b4f29ed3/5e48b5818af0117f322d7c4ae77977a8.jpeg" alt="Bucket Original" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                        </div>
+                        <h3 class="font-display font-bold text-2xl mb-2">Bucket Original</h3>
+                        <p class="text-neutral-500 text-sm font-light mb-5">8 piezas de pollo crujiente con la receta secreta del Coronel.</p>
+                        <div class="flex justify-between items-center pt-4 border-t border-neutral-100">
+                            <span class="font-bebas text-3xl text-kfc-red tracking-wide">$15.99</span>
+                            <button aria-label="Agregar" class="w-11 h-11 bg-kfc-dark hover:bg-kfc-red hover:rotate-90 text-white rounded-full text-xl transition-all duration-300">+</button>
+                        </div>
+                    </article>
+
+                    <!-- Producto 2 -->
+                    <article class="producto bg-white rounded-3xl p-6 shadow-sm hover:shadow-2xl border border-neutral-100 hover:-translate-y-3 transition-all duration-500">
+                        <div class="h-52 rounded-2xl overflow-hidden mb-5 shadow-md">
+                            <img src="https://tb-static.uber.com/prod/image-proc/processed_images/0fe79089ee49472046e04ff8b4f29ed3/5e48b5818af0117f322d7c4ae77977a8.jpeg" alt="Combo Familiar" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                        </div>
+                        <h3 class="font-display font-bold text-2xl mb-2">Combo Familiar</h3>
+                        <p class="text-neutral-500 text-sm font-light mb-5">12 piezas, papas grandes, ensalada y 4 bebidas para compartir.</p>
+                        <div class="flex justify-between items-center pt-4 border-t border-neutral-100">
+                            <span class="font-bebas text-3xl text-kfc-red tracking-wide">$24.99</span>
+                            <button aria-label="Agregar" class="w-11 h-11 bg-kfc-dark hover:bg-kfc-red hover:rotate-90 text-white rounded-full text-xl transition-all duration-300">+</button>
+                        </div>
+                    </article>
+
+                    <!-- Producto 3 -->
+                    <article class="producto bg-white rounded-3xl p-6 shadow-sm hover:shadow-2xl border border-neutral-100 hover:-translate-y-3 transition-all duration-500">
+                        <div class="h-52 rounded-2xl overflow-hidden mb-5 shadow-md">
+                            <img src="https://tb-static.uber.com/prod/image-proc/processed_images/0fe79089ee49472046e04ff8b4f29ed3/5e48b5818af0117f322d7c4ae77977a8.jpeg" alt="Twister Premium" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                        </div>
+                        <h3 class="font-display font-bold text-2xl mb-2">Twister Premium</h3>
+                        <p class="text-neutral-500 text-sm font-light mb-5">Tortilla suave rellena con pollo, lechuga fresca y salsa especial.</p>
+                        <div class="flex justify-between items-center pt-4 border-t border-neutral-100">
+                            <span class="font-bebas text-3xl text-kfc-red tracking-wide">$5.99</span>
+                            <button aria-label="Agregar" class="w-11 h-11 bg-kfc-dark hover:bg-kfc-red hover:rotate-90 text-white rounded-full text-xl transition-all duration-300">+</button>
+                        </div>
+                    </article>
+
+                    <!-- Producto 4 -->
+                    <article class="producto bg-white rounded-3xl p-6 shadow-sm hover:shadow-2xl border border-neutral-100 hover:-translate-y-3 transition-all duration-500">
+                        <div class="h-52 rounded-2xl overflow-hidden mb-5 shadow-md">
+                            <img src="https://tb-static.uber.com/prod/image-proc/processed_images/0fe79089ee49472046e04ff8b4f29ed3/5e48b5818af0117f322d7c4ae77977a8.jpeg" alt="Hot Wings" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                        </div>
+                        <h3 class="font-display font-bold text-2xl mb-2">Hot Wings</h3>
+                        <p class="text-neutral-500 text-sm font-light mb-5">6 alitas picantes irresistibles acompañadas de salsa BBQ artesanal.</p>
+                        <div class="flex justify-between items-center pt-4 border-t border-neutral-100">
+                            <span class="font-bebas text-3xl text-kfc-red tracking-wide">$7.99</span>
+                            <button aria-label="Agregar" class="w-11 h-11 bg-kfc-dark hover:bg-kfc-red hover:rotate-90 text-white rounded-full text-xl transition-all duration-300">+</button>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT -->
+        <section id="nosotros" class="py-28 px-6 lg:px-12 bg-kfc-dark text-white relative overflow-hidden">
+            <div class="absolute top-1/2 -left-48 w-[500px] h-[500px] -translate-y-1/2 rounded-full bg-kfc-red/20 blur-3xl"></div>
+            <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center relative z-10">
+                <div>
+                    <span class="block text-kfc-red text-sm font-semibold tracking-[4px] uppercase mb-4">— Nuestra Historia —</span>
+                    <h2 class="font-display font-black text-4xl md:text-5xl tracking-tight mb-6">
+                        Más de <em class="italic text-kfc-red">70 años</em> creando momentos inolvidables.
+                    </h2>
+                    <p class="text-white/70 font-light text-lg leading-relaxed">
+                        Fundada por el Coronel Harland Sanders en 1952, KFC se ha convertido en
+                        una de las cadenas más reconocidas del mundo. Nuestra receta secreta de
+                        11 hierbas y especias sigue siendo el alma de cada bocado, sirviendo
+                        sonrisas en más de 145 países.
+                    </p>
+                </div>
+                <div class="grid grid-cols-2 gap-5">
+                    <div class="p-8 bg-white/5 border border-white/10 rounded-3xl text-center backdrop-blur hover:bg-kfc-red/10 hover:border-kfc-red transition hover:-translate-y-1">
+                        <div class="font-bebas text-5xl text-kfc-gold">145+</div>
+                        <div class="text-xs uppercase tracking-widest text-white/60 mt-2">Países</div>
+                    </div>
+                    <div class="p-8 bg-white/5 border border-white/10 rounded-3xl text-center backdrop-blur hover:bg-kfc-red/10 hover:border-kfc-red transition hover:-translate-y-1">
+                        <div class="font-bebas text-5xl text-kfc-gold">25K</div>
+                        <div class="text-xs uppercase tracking-widest text-white/60 mt-2">Restaurantes</div>
+                    </div>
+                    <div class="p-8 bg-white/5 border border-white/10 rounded-3xl text-center backdrop-blur hover:bg-kfc-red/10 hover:border-kfc-red transition hover:-translate-y-1">
+                        <div class="font-bebas text-5xl text-kfc-gold">70+</div>
+                        <div class="text-xs uppercase tracking-widest text-white/60 mt-2">Años</div>
+                    </div>
+                    <div class="p-8 bg-white/5 border border-white/10 rounded-3xl text-center backdrop-blur hover:bg-kfc-red/10 hover:border-kfc-red transition hover:-translate-y-1">
+                        <div class="font-bebas text-5xl text-kfc-gold">11</div>
+                        <div class="text-xs uppercase tracking-widest text-white/60 mt-2">Especias</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer id="contacto" class="bg-black text-white py-16 px-6 lg:px-12 border-t border-white/5">
+        <div class="max-w-5xl mx-auto text-center">
+            <div class="font-bebas text-4xl tracking-[4px] mb-4">K<span class="text-kfc-red">F</span>C</div>
+            <p class="text-white/50 max-w-lg mx-auto mb-8">
+                Llevamos el auténtico sabor del pollo crujiente directamente a tu mesa.
+            </p>
+            <div class="flex flex-wrap justify-center gap-6 md:gap-8 mb-8">
+                <a href="#inicio" class="text-white/60 hover:text-kfc-gold text-sm transition">Inicio</a>
+                <a href="#menu" class="text-white/60 hover:text-kfc-gold text-sm transition">Menú</a>
+                <a href="#nosotros" class="text-white/60 hover:text-kfc-gold text-sm transition">Nosotros</a>
+                <a href="mailto:info@kfc.com" class="text-white/60 hover:text-kfc-gold text-sm transition">Contacto</a>
+                <a href="#" class="text-white/60 hover:text-kfc-gold text-sm transition">Términos</a>
+            </div>
+            <div class="pt-8 border-t border-white/5 text-white/40 text-sm">
+                &copy; 2026 KFC — Todos los derechos reservados.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
