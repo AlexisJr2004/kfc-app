@@ -1,1 +1,1 @@
-# KFC App v1.0
+# KFC App v2.0
