@@ -2,6 +2,10 @@
 
 Este proyecto es un concepto de landing page moderna y visualmente atractiva para KFC, construida con HTML y Tailwind CSS. Muestra una variedad de técnicas de front-end para crear una experiencia de usuario atractiva.
 
+## 📸 Vista Previa
+
+![Vista previa de la landing page de KFC](img/image.png)
+
 ## ✨ Características
 
 - **Diseño Moderno y Responsivo**: Diseño totalmente responsivo que se adapta a diferentes tamaños de pantalla, desde móviles hasta ordenadores de escritorio.
@@ -25,7 +29,21 @@ Este proyecto es un concepto de landing page moderna y visualmente atractiva par
 - **[Google Fonts](https://fonts.google.com/)**: Para fuentes web personalizadas.
 - **JavaScript**: Se utiliza un pequeño script para configurar el tema de Tailwind CSS con colores, fuentes y animaciones personalizadas.
 
+## 📁 Estructura del Proyecto
+
+```
+kfc-app/
+├── kfc.html        # Página principal del proyecto
+├── img/
+│   └── image.png   # Vista previa de la landing page
+└── README.md
+```
+
 ## 🚀 Cómo Visualizar
 
 Simplemente abre el archivo `kfc.html` en un navegador web moderno para ver la página en acción.
+
+## 📄 Licencia
+
+Este proyecto tiene fines educativos y de demostración. Todas las marcas y nombres relacionados con KFC pertenecen a sus respectivos propietarios.
 
